@@ -40,7 +40,7 @@ A ideia é que ao longo do desenvolvimento o projeto seja mais detalhado, mas os
 
 ## Estrutura do Banco de Imagens (Organigrama)
 
-![Organograma Banco de Imagens](./Desafio\imagens_README\organograma_readme_.png)
+![Organograma Banco de Imagens](./Desafio/imagens_README/organograma_readme_.png)
 
 ## Observação
 Este README será atualizado à medida que o projeto for evoluindo, documentando cada etapa com exemplos práticos, imagens e métricas de desempenho.

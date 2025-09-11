@@ -1,6 +1,6 @@
 # Reconhecimento e Visualização de Placas Automotivas
 
-![Visualização de Placa](https://embarcados.com.br/reconhecimento-automatico-de-placas-de-identificacao-de-veiculos-em-uma-jetson-nano-usando-yolov4-tiny-e-lprnet/)
+![Visualização de Placa](https://sensoreng.com.br/wp-content/uploads/2021/03/lpr-leitura-de-placas-de-veiculos-monitoramento-de-portaria-online-armanzenamento-em-nuvem-300x169.jpg)
 
 ## Objetivo
 Este projeto tem como objetivo estudar e implementar um sistema de **detecção e reconhecimento automático de placas de veículos (OCR)**, utilizando visão computacional e técnicas de aprendizado de máquina, como requisito parcial para a formatura no programa de aperfeiçoamento de estagiários do Instituto Atlântico. 
@@ -40,7 +40,7 @@ A ideia é que ao longo do desenvolvimento o projeto seja mais detalhado, mas os
 
 ## Estrutura do Banco de Imagens (Organigrama)
 
-![Organograma Banco de Imagens](C:\Users\isabel_martins\Documents\ASCAN\Computação Cognitiva\Desafio\imagens_README\organograma_readme_.png)
+![Organograma Banco de Imagens](./Desafio\imagens_README\organograma_readme_.png)
 
 ## Observação
 Este README será atualizado à medida que o projeto for evoluindo, documentando cada etapa com exemplos práticos, imagens e métricas de desempenho.

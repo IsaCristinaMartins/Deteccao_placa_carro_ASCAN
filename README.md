@@ -9,6 +9,7 @@ Este projeto tem como objetivo estudar e implementar um sistema de **detecção 
 A ideia é que ao longo do desenvolvimento o projeto seja mais detalhado, mas os passos gerais serão:
 
 1. **Coleta de Dados**
+   - Vá em 'entendendo_processamentos.md' para entender quantos frames você irá precisar no seu processo. 
    - Criação e organização do banco de imagens de placas de veículos (dataset local).
    - Separação em pastas: `train/`, `test/`, `validation/`.
 

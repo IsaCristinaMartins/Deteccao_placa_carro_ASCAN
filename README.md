@@ -24,6 +24,16 @@ A ideia é que ao longo do desenvolvimento o projeto seja mais detalhado, mas os
 
 4. **Detecção da Placa**
    - Utilização de técnicas de visão computacional (OpenCV, Haar Cascades, YOLO, etc.).
+   - Valores bons/aceitáveis para um detector simples de placas:
+         - mAP50 (mean Average Precision em IoU=0.5) → ≥0,7 já é bom, ≥0,85 ótimo
+         - mAP50-95 (mais rigoroso) → ≥0,5 aceitável, ≥0,65 bom
+         - Precision → ≥0,8 bom (quer dizer poucos falsos positivos)
+         - Recall → ≥0,7 bom (não perder muitas placas)
+         - Loss (box/class) → valores caindo e estabilizando, ideal <1 no final
+
+
+
+
    - Delimitação da placa dentro da imagem.
 
 5. **Reconhecimento de Caracteres (OCR)**
@@ -39,9 +49,11 @@ A ideia é que ao longo do desenvolvimento o projeto seja mais detalhado, mas os
    - Gráficos comparando diferentes abordagens.
 
 
-## Estrutura do Banco de Imagens (Organigrama)
+## Estrutura do Banco de Imagens (Organograma)
 
 ![Organograma Banco de Imagens](./Desafio/imagens_README/organograma_readme_.png)
 
 ## Observação
 Este README será atualizado à medida que o projeto for evoluindo, documentando cada etapa com exemplos práticos, imagens e métricas de desempenho.
+
+

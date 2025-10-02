@@ -1,0 +1,4 @@
+path: C:/Users/isabel_martins/Documents/ASCAN/Computação Cognitiva/Desafio/data/Placas/yolo
+train: images/train
+val: images/val
+names: [placa]

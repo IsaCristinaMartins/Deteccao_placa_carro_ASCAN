@@ -1,23 +1,48 @@
 ## Checklists
-- Pré-processamento do frame, corte do vídeo para "foto"
-- Converter para escala de cinza (cv2.cvtColor)
-- Remover ruído (blur leve ou filtro bilateral)
-- Aumentar contraste/bordas (Canny, Sobel ou equalização de histograma)
+# - Extrair frames (10 fps)
+#  - Gerar imagens únicas a partir do vídeo.
+- Pré-processar
+  - Remover ruído (blur leve ou filtro bilateral).
+  - Aumentar contraste/bordas (equalização de histograma/CLAHE e Canny/Sobel).
 - Localizar regiões candidatas à placa
-- Detectar contornos retangulares (placas têm formato retangular padrão).
-- Filtrar pelo aspect ratio (largura ≈ 2 a 5 vezes maior que altura).
-- Descartar regiões muito pequenas/grandes.
-- Outra opção: usar classificador pré-treinado (Haar Cascade para placas ou YOLO/SSD para detecção mais moderna).
+  - A partir do mapa de bordas + contornos.
+- Detectar contornos retangulares
+  - Placas têm formato retangular padrão (aproximação poligonal).
+- Filtrar por aspect ratio e tamanho
+  - Largura ≈ 2 a 5× a altura.
+  - Descartar regiões muito pequenas/grandes.
+- Outra opção (em vez de contornos)
+  - Usar classificador pré-treinado:
+    - Haar Cascade (trabalha em cinza) (NÃO FOI A ESCOLHIDA) ou
+
+
+    - YOLO/SSD (detecção moderna; pode usar imagem colorida; ideal treinar/avaliar com o dataset do Kaggle).
 - Cortar a região da placa
-- Depois do passo anterior, você isola só o “retângulo” que parece uma placa.
-- Isso gera uma nova imagem, bem menor, que vai para o OCR.
-- Pós-processamento da placa cortada
-- Binarizar (preto e branco)
-- Corrigir inclinação (deskew, se a placa estiver torta)
-- Reduzir ruído extra (morfologia: cv2.morphologyEx)
+  - Isolar o “retângulo” que parece placa (com pequena margem).
+  - Gera uma nova imagem menor que vai para o OCR.
+- Pós-processar a placa cortada
+  - Binarizar (preto e branco, ex.: Otsu).
+  - Corrigir inclinação (deskew/retificação de perspectiva).
+  - Reduzir ruído extra (morfologia: cv2.morphologyEx).
 - OCR (Tesseract ou outro)
-- Só aqui entra a leitura de caracteres.
-- A qualidade depende muito do corte bem feito e do contraste.
+  - Só aqui entra a leitura de caracteres.
+  - A qualidade depende do corte e do contraste (usar psm de linha única e whitelist A–Z/0–9 ajuda).
+- Pós-processamento do texto
+  - Normalizar (maiúsculas, remover espaços).
+  - Validar por regex de placas BR (AAA-0000 / AAA0A00).
+  - Corrigir confusões comuns (O↔0, I↔1, B↔8, S↔5).
+  - (Opcional) Voto majoritário entre frames consecutivos do mesmo carro.
+- Saídas
+  - CSV: frame, bbox, texto_ocr_bruto, texto_placa_final, confianca_ocr, metodo_detecao.
+  - (Opcional) Frames anotados com bbox + texto.
+- Uso do dataset do Kaggle (exigência)
+  - Treinar YOLO/SSD ou avaliar o pipeline nas imagens do dataset e reportar métricas.
+- Métricas mínimas
+  - Detecção: recall@IoU≥0.5 ou taxa de detecção por imagem.
+  - OCR: plate accuracy (match completo) e, opcionalmente, CER.
+
+Nota rápida: nos passos com Canny/Sobel/Haar, trabalhe em escala de cinza; YOLO/SSD pode operar em colorido.
+
 
 ## Anotações
 - Dúvidas:
@@ -25,6 +50,13 @@
 
 
 - Decisões e pequenos resultados do dia:
-        o código até rodou mas, só saiu um frame no vídeo de 16 segundo, foi preciso ajustar para ser retirado mais frames. 
+        - converter_para_yolo.py → converte as anotações do Kaggle para formato YOLO
+        -  treinar_yolo.py
+
+        - extraindo_frames.py
+
+        - inferencia_placas.py
+
+        - ocr_placas.py
 
 

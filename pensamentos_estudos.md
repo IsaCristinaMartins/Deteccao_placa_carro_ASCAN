@@ -60,3 +60,12 @@ Nota rápida: nos passos com Canny/Sobel/Haar, trabalhe em escala de cinza; YOLO
         - ocr_placas.py
 
 
+extraindo_frames.py → extrai os quadros do novo vídeo
+
+convertendo_frames.py → faz o pré-processamento dos frames (ex.: escala de cinza, filtros etc.)
+
+converte_para_yolo.py → converte os frames para o formato que o YOLO espera
+
+inferencia_placa.py → roda a detecção das placas com o modelo já treinado
+
+ocr-placas.py → lê os recortes e extrai o texto das placas (OCR)
